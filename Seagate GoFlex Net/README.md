@@ -1,0 +1,1 @@
+The OG ARM sandbox before the RaspberryPi stole all the thunder, dev eyes and oxygen, the Dockstar / Seagate GoFlex Net. An ARMv5 (32bit) core with no floating point, 128MB RAM, Gigabit ethernet and a pair of SATA ports. Sheeva plugs/etc are other common devices based around this Marvell SOC.
