@@ -1,0 +1,8 @@
+#! /bin/bash
+#echo $1 >> /root/dlconfig-log
+if [ -e /sys$1/bConfigurationValue ]; then
+    /sbin/modprobe udlfb console=1 fb_defio=1 shadow=0
+    echo 1 > /sys$1/bConfigurationValue
+    /sbin/modprobe fbcon
+#    echo Reset >> /root/dlconfig-log
+fi;
