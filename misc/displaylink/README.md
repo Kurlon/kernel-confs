@@ -1,0 +1,1 @@
+I have a bad habit of throwing Displaylink docks onto ye olde systems to get video/sound/etc out of them. Unfortunately most default to a state where they look like USB Mass Storage instead of a Displaylink device. These udev rules and script detect that and kick them into usable mode.
