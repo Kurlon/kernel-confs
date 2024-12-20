@@ -1,7 +1,7 @@
 Random notes from attempting to install Debian 13 (testing) from Gentoo on a GoFlex Net.
 
 - Prep the target filesystem. Two partitions, rootfs and swap.  Use e2label to label / rootfs
-   - U-Boot 2016 can boot off ext4, but doesn't support the 64bit feature, use 'mkfs.ext4 -O ^metadata_csum,^64bit /dev/sdX1' when formatting.
+   - U-Boot 2016 can boot off ext4, but doesn't support 64bit features, use 'mkfs.ext4 -O ^metadata_csum,^64bit /dev/sdX1' when formatting.
    - https://forum.doozan.com/read.php?3,12381 has updated U-Boot images, may have a fix for this?
    - mount rootfs somewhere like /mnt/debian
 
