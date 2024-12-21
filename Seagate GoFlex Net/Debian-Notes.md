@@ -16,3 +16,5 @@ Random notes from attempting to install Debian 13 (testing) from Gentoo on a GoF
    - Install u-boot-tools initramfs-tools
    - For the kernel, 13 only has RPi stuff at the moment, get a kernel with install instructions at https://forum.doozan.com/read.php?2,12096
      - Install firmware-linux THEN process the initrd
+   - Setup /etc/fw_env.config:
+       /dev/mtd0 0xc0000 0x20000 0x20000
