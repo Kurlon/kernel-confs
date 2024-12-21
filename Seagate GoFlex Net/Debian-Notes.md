@@ -18,3 +18,7 @@ Random notes from attempting to install Debian 13 (testing) from Gentoo on a GoF
      - Install firmware-linux THEN process the initrd
    - Setup /etc/fw_env.config:
      - /dev/mtd0 0xc0000 0x20000 0x20000
+
+- Random fun info:
+  - https://www.kernel.org/doc/Documentation/devicetree/bindings/leds/common.yaml
+    - GPIO LEDs can now have automated triggers in kernel instead of via scripts, disk / network activity, system load, etc all handled in kernel.
