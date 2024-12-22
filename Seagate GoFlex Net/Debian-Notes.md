@@ -13,7 +13,7 @@ Random notes from attempting to install Debian 13 (testing) from Gentoo on a GoF
  - Chroot in, configure using this as a rough guide: https://gist.github.com/varqox/42e213b6b2dde2b636ef#set-up-filesystem-for-debian
    - Before installing the kernel, update sources.list
      - When setting up sources, add non-free AND non-free-firmware
-   - Install u-boot-tools initramfs-tools
+   - Install u-boot-tools initramfs-tools bzip2 xz-utils man-db wget
    - For the kernel, 13 only has RPi stuff at the moment, get a kernel with install instructions at https://forum.doozan.com/read.php?2,12096
      - Install firmware-linux THEN process the initrd
    - Setup /etc/fw_env.config:
