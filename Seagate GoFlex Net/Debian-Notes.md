@@ -39,7 +39,7 @@ Random notes from attempting to install Debian 13 (testing) from Gentoo on a GoF
         - Rootfs mount options: defaults,relatime,discard,nobarrier
         - swap mount options: sw,discard=once,pri=0
       - sources.list:
-        - deb https://deb.debian.org/debian testing main non-free non-free-firmware
+        - deb https://deb.debian.org/debian testing main contrib non-free non-free-firmware
         - deb-src https://deb.debian.org/debian testing main contrib non-free non-free-firmware
       - After updating sources, apt install u-boot-tools initramfs-tools bzip2 bzip2-doc xz-utils man-db wget firmware-linux bash-completion systemd-timesyncd openssh-server
         - Consider swapping in dropbear for openssh-server if also skipping Network-Manager.
