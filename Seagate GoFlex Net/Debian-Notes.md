@@ -52,4 +52,6 @@ Random notes from attempting to install Debian 13 (testing) from Gentoo on a GoF
       - useradd UNAME -m -s /bin/bash
         - Why they default to /bin/sh I don't know, and I get grumpy when I forgot to fix it.
       - Do NOT use tasksel, particularly to install a desktop env. Doing so triggers something to be added that causes nearly every usb network / bluetooth / wireless kernel module to be loaded at boot for some reason. Additionally, even lxde as fully setup by tasksel is just too fat for a 128MB RAM box. Xorg with a window manager will have to be more handrolled to maximize usefullness on the GoFlex.
-      - Console setup, os prober, etc, skip it, from here it's basically reboot and hope it works time.
+      - Console setup, os prober, etc, skip the rest.
+      - exit, umount -R /mnt/debian
+   - Reboot time, poweroff, shuffle drives as needed, boot.
