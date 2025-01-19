@@ -3,6 +3,12 @@ Setup Grub for serial console
 In Progress Kernel conf changes needed:
 - CPU to GeodeGX1
 - Enable x86 board specific fixups
+- - Still won't reboot cleanly, hangs at:
+
+[    1.881154] clocksource: tsc-early: mask: 0xffffffffffffffff max_cycles: 0x3d7e2918fb, max_idle_ns: 440795206096 ns
+[    1.891986] Calibrating delay loop (skipped), value calculated using timer frequency.. 533.25 BogoMIPS (lpj=2666290)
+[    1.902095] Working around Cyrix MediaGX virtual DMA bugs.
+
 - Timer freq to 100 HZ from 300 HZ
 - ATA SC1200 support built in
 - NatSemi DP8381 NIC support built in instead of module
