@@ -1,3 +1,10 @@
+Setup Grub for serial console
+
 In Progress Kernel conf changes needed:
 - CPU to GeodeGX1
+- Enable x86 board specific fixups
+- Timer freq to 100 HZ from 300 HZ
 - ATA SC1200 support built in
+- NatSemi DP8381 NIC support built in instead of module
+
+
