@@ -22,7 +22,8 @@ systemctl disable --now getty@tty1
   Impossible to connect to the 'local' tty anyways.
 
 systemctl disable systemd-resolved
-  4501 Kernel bangs up IP via DHCP at boot, setup resolv.conf to use an external resolver instead of chewing up RAM to cache locally. Networkd or some other DHCP client is needed as the kernel honors lease times, but doesn't do renewals.
+  4501 Kernel bangs up IP via DHCP at boot, setup resolv.conf to use an external resolver instead of chewing up RAM to cache locally. Networkd or some other DHCP client is needed as the kernel honors lease times, but doesn't do renewals?
+  Nope, after awhile swap over NFS fails without warning, takes longer when systemd-networkd is in use but still happens under load. Kernel eventually reports that nfs server not responding, despite it being online, and both responding to ping?
 
 systemctl disable systemd-userdbd systemd-userdbd.socket systemd-nsresourced
   Will need to reboot to see the HUGE benefit of this, all fancy ways of Systemd trying to 'speed up' lookups against system files like passwords, groups, etc.
