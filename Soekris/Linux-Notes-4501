@@ -12,6 +12,9 @@ In Progress Kernel conf changes needed:
 - Timer freq to 100 HZ from 300 HZ
 - ATA SC1200 support built in
 - NatSemi DP8381 NIC support built in instead of module
+- Box doesn't have USB, usable PCI slot, etc, strip out drivers and methods that don't make sense, shrink that kernel.
+
+Use -Os instead of -O2
 
 Trimming the Systemd fat:
 systemctl disable --now getty@tty1
