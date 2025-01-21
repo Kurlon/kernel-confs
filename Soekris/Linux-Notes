@@ -1,20 +1,21 @@
 Setup Grub for serial console
 
 In Progress Kernel conf changes needed:
-- CPU to GeodeGX1
+- CPU to GeodeGX1 for 4801, AMD Elan for 4501
 - Enable x86 board specific fixups
-- - Still won't reboot cleanly, hangs at:
+- - 4801 Still won't reboot cleanly, hangs at:
 
 [    1.881154] clocksource: tsc-early: mask: 0xffffffffffffffff max_cycles: 0x3d7e2918fb, max_idle_ns: 440795206096 ns
 [    1.891986] Calibrating delay loop (skipped), value calculated using timer frequency.. 533.25 BogoMIPS (lpj=2666290)
 [    1.902095] Working around Cyrix MediaGX virtual DMA bugs.
 
 - Timer freq to 100 HZ from 300 HZ
-- ATA SC1200 support built in
+- ATA SC1200 support built in for 4801
+- Legacy PATA for 4501
 - NatSemi DP8381 NIC support built in instead of module
-- Box doesn't have USB, usable PCI slot, etc, strip out drivers and methods that don't make sense, shrink that kernel.
+- 4501 doesn't have USB, usable PCI slot, etc, strip out drivers and methods that don't make sense, shrink that kernel.
 
-Use -Os instead of -O2
+- 4501 Use -Os instead of -O2
 
 Trimming the Systemd fat:
 systemctl disable --now getty@tty1
