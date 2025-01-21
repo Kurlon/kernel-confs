@@ -22,7 +22,7 @@ systemctl disable --now getty@tty1
   Impossible to connect to the 'local' tty anyways.
 
 systemctl disable systemd-networkd systemd-resolved
-  Kernel bangs up IP via DHCP at boot, setup resolv.conf to use an external resolver instead of chewing up RAM to cache locally.
+  4501 Kernel bangs up IP via DHCP at boot, setup resolv.conf to use an external resolver instead of chewing up RAM to cache locally.
 
 systemctl disable systemd-userdbd systemd-userdbd.socket systemd-nsresourced
   Will need to reboot to see the HUGE benefit of this, all fancy ways of Systemd trying to 'speed up' lookups against system files like passwords, groups, etc.
