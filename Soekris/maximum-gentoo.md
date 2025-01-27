@@ -22,6 +22,14 @@ Step 2 - Initial chroot - https://wiki.gentoo.org/wiki/Handbook:X86/Full/Install
   - Setup make.conf to use -j24 -l25, add --jobs 4 to the full world rebuild emerge to go moar faster.
 
 GCC Option Comparison (-O2 vs -Os vs -Oz)
+Note this is only looking at binary size, performance isn't considered / benched yet. It's also assumed that the overall memory footprint of a given binary isn't changed, IE going from -O3 to -Oz isn't going to prevent xz from eating 60MB of working ram to do it's job, just the binary's size in RAM will hopefully shrink. The theory here is on VERY RAM constrained systems, the loss of raw perf by going to a lower optimization level will be offset by not paging to swap as often by virtue of executable code being smaller.
 - Kernel 6.6.67 (Gzip)
   - Os bzImage 4440576bytes (Almost 1MB smaller)
   - O2 bzImage 5411328bytes
+- World
+  - /usr/lib
+    - Oz 282596bytes
+  - /usr/bin
+    - Oz 72540bytes
+  - /usr/libexec
+    - Oz 182028bytes
