@@ -20,3 +20,8 @@ Step 2 - Initial chroot - https://wiki.gentoo.org/wiki/Handbook:X86/Full/Install
   - New CFLAGS will be "-Oz -march=i486 -pipe"
   - When doing the /etc/env.d check, you're grepping for just linux, not linux-gnu like the example shows.
   - Setup make.conf to use -j24 -l25, add --jobs 4 to the full world rebuild emerge to go moar faster.
+
+GCC Option Comparison (-O2 vs -Os vs -Oz)
+- Kernel 6.6.67 (Gzip)
+  - Os bzImage 4440576bytes (Almost 1MB smaller)
+  - O2 bzImage 5411328bytes
