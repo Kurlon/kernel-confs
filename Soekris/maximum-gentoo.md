@@ -25,23 +25,12 @@ GCC Option Comparison (-O2 vs -Os vs -Oz)
 Note this is only looking at binary size, performance isn't considered / benched yet. It's also assumed that the overall memory footprint of a given binary isn't changed, IE going from -O3 to -Oz isn't going to prevent xz from eating 60MB of working ram to do it's job, just the binary's size in RAM will hopefully shrink. The theory here is on VERY RAM constrained systems, the loss of raw perf by going to a lower optimization level will be offset by not paging to swap as often by virtue of executable code being smaller.
 
 I'm testing this by doing a full world rebuild in a chroot, just changing cflags to see what happens at the macro level. No performance testing has been done to compare the speed impact of these tweaks.
-
-- Kernel 6.6.67 (Gzip)
-  - Os bzImage 4440576bytes
-  - O2 bzImage 5411328bytes
-- World
-  - /usr/lib
-    - Oz 282596Kbytes
-    - Os 384272Kbytes
-    - O2 403928Kbytes
-  - /usr/bin
-    - Oz 72540Kbytes
-    - Os 73088Kbytes
-    - O2 108320Kbytes
-  - /usr/libexec
-    - Oz 182028Kbytes
-    - Os 182044Kbytes
-    - O2 182564Kbytes
-
-Todo: Test full code shrinkage with -flto -ffunction-sections -fdata-sections -Wl,--gc-sections
-Note: -fomit-frame-pointer is only in use at O2, not Os / Oz
+			
+| GCC Options	| bzImage	| /usr/lib | /usr/bin | /usr/libexec |
+| --- | --- | --- | --- | --- |
+| -O2 | 4336 | 403928 | 108320 | 182564 |
+| -O2 -flto | | 401096 | 98044 |192632 |
+| -O2 -flto -ffunction-sections -fdata-sections -Wl,--gc-sections | | | | |
+| -Os | 5248 | 384272 | 73088 | 182044 |
+| -Oz | | 282596 | 72549 | 182028 |
+| -Oz -fomit-frame-pointer -flto -ffunction-sections -fdata-sections -Wl,--gc-sections | | | | |
