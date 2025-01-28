@@ -23,13 +23,19 @@ Step 2 - Initial chroot - https://wiki.gentoo.org/wiki/Handbook:X86/Full/Install
 
 GCC Option Comparison (-O2 vs -Os vs -Oz)
 Note this is only looking at binary size, performance isn't considered / benched yet. It's also assumed that the overall memory footprint of a given binary isn't changed, IE going from -O3 to -Oz isn't going to prevent xz from eating 60MB of working ram to do it's job, just the binary's size in RAM will hopefully shrink. The theory here is on VERY RAM constrained systems, the loss of raw perf by going to a lower optimization level will be offset by not paging to swap as often by virtue of executable code being smaller.
+
+I'm testing this by doing a full world rebuild in a chroot, just changing cflags to see what happens at the macro level. No performance testing has been done to compare the speed impact of these tweaks.
+
 - Kernel 6.6.67 (Gzip)
-  - Os bzImage 4440576bytes (Almost 1MB smaller)
+  - Os bzImage 4440576bytes
   - O2 bzImage 5411328bytes
 - World
   - /usr/lib
-    - Oz 282596bytes
+    - Oz 282596Kbytes
+    - O2 403928Kbytes
   - /usr/bin
-    - Oz 72540bytes
+    - Oz 72540Kbytes
+    - O2 108320Kbytes
   - /usr/libexec
-    - Oz 182028bytes
+    - Oz 182028Kbytes
+    - O2 182564Kbytes
