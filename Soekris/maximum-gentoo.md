@@ -32,10 +32,13 @@ I'm testing this by doing a full world rebuild in a chroot, just changing cflags
 - World
   - /usr/lib
     - Oz 282596Kbytes
+    - Os 384272Kbytes
     - O2 403928Kbytes
   - /usr/bin
     - Oz 72540Kbytes
+    - Os 73088Kbytes
     - O2 108320Kbytes
   - /usr/libexec
     - Oz 182028Kbytes
+    - Os 182044Kbytes
     - O2 182564Kbytes
