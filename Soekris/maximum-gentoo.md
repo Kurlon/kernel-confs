@@ -42,3 +42,6 @@ I'm testing this by doing a full world rebuild in a chroot, just changing cflags
     - Oz 182028Kbytes
     - Os 182044Kbytes
     - O2 182564Kbytes
+
+Todo: Test full code shrinkage with -flto -ffunction-sections -fdata-sections -Wl,--gc-sections
+Note: -fomit-frame-pointer is only in use at O2, not Os / Oz
