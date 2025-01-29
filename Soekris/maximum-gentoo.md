@@ -24,7 +24,7 @@ Step 2 - Initial chroot - https://wiki.gentoo.org/wiki/Handbook:X86/Full/Install
 GCC Option Comparison (-O2 vs -Os vs -Oz)
 Note this is only looking at binary size, performance isn't considered / benched yet. It's also assumed that the overall memory footprint of a given binary isn't changed, IE going from -O3 to -Oz isn't going to prevent xz from eating 60MB of working ram to do it's job, just the binary's size in RAM will hopefully shrink. The theory here is on VERY RAM constrained systems, the loss of raw perf by going to a lower optimization level will be offset by not paging to swap as often by virtue of executable code being smaller.
 
-I'm testing this by doing a full world rebuild in a chroot, just changing cflags to see what happens at the macro level. No performance testing has been done to compare the speed impact of these tweaks.
+I'm testing this by doing a full world rebuild in a chroot, just changing cflags to see what happens at the macro level. No performance testing has been done to compare the speed impact of these tweaks. I'm breaking out -fomit-frame-pointer as it only kicks in on -march=i486 at O2 and up.
 			
 | GCC Options	| bzImage	| /usr/lib | /usr/bin | /usr/libexec |
 | --- | --- | --- | --- | --- |
