@@ -30,7 +30,7 @@ I'm testing this by doing a full world rebuild in a chroot, just changing cflags
 | --- | --- | --- | --- | --- |
 | -O2 | 4336 | 403928 | 108320 | 182564 |
 | -O2 -flto | | 401096 | 98044 |192632 |
-| -O2 -flto -ffunction-sections -fdata-sections -Wl,--gc-sections | | | | |
+| -O2 -flto -ffunction-sections -fdata-sections -Wl,--gc-sections | | 400900 | 94880 | 191936 |
 | -Os | 5248 | 384272 | 73088 | 182044 |
 | -Oz | | 282596 | 72549 | 182028 |
 | -Oz -fomit-frame-pointer -flto -ffunction-sections -fdata-sections -Wl,--gc-sections | | | | |
