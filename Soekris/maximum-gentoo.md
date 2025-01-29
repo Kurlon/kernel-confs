@@ -34,4 +34,5 @@ I'm testing this by doing a full world rebuild in a chroot, just changing cflags
 | -Os | 5248 | 384272 | 73088 | 182044 |
 | -Oz | | 282596 | 72549 | 182028 |
 | -Oz -fomit-frame-pointer -flto -ffunction-sections -fdata-sections -Wl,--gc-sections | | 385590 | 67348 | 191744 |
+| -Os -flto -ffunction-sections -fdata-sections -Wl,--gc-sections | | 382192 | 64056 | 191620 |
 | -Oz -flto -ffunction-sections -fdata-sections -Wl,--gc-sections | | 380532 | 63620 | 191628 |
