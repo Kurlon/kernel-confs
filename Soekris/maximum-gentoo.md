@@ -30,7 +30,7 @@ Step 3 - Kernel / boot stuffs
   - Grub will be used to switch from pxeboot to local boot once the system is live.
 - Install sys-block/nbd
 - Install net-misc/dhcp to get dhclient which allows dracut to use the network-legacy module
-- Update dracut's conf to be hostonly, use nbd, network-legacy and base modules only
+- Update dracut's conf: use nbd, network-legacy and base modules only
 - Install Gentoo-sources, use stripped down kernel conf
 
 GCC Option Comparison (-O2 vs -Os vs -Oz)
