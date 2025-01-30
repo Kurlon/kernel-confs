@@ -1,6 +1,9 @@
 Maximum Gentoo - Full send for a 486
 - Custom OpenRC stage 3 built for 486 with -Oz and musl, maybe LTO?
 
+Step 0 - Soekris 4501 setup
+ - PXE Booting to start, just requires serial console access and DHCP to be setup properly.  PXELinux and IPXE (old version, build on Ubuntu 14.04 or equivilent) both work. Will also need a tftp host to hold kernel, initramfs, and bootloaders.
+   
 Step 1 - Gentoo build farm
 - HP DL160 G6
   - 2 x Xeon X5650 (12 cores total at 2.66GHz)
