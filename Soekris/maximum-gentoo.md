@@ -11,7 +11,7 @@ Step 1 - Gentoo build farm
 - Booster - NBD host
   - Gentoo VM used for light distcc duty, and now hosting NBD servers for my 486 'cause it's limited to CF storage currently, and all I have working is a 256MB card.
 
-Step 2 - Initial chroot - https://wiki.gentoo.org/wiki/Handbook:X86/Full/Installation
+Step 2 - Start the Initial chroot - https://wiki.gentoo.org/wiki/Handbook:X86/Full/Installation
 - Go through the x86 Handbook, using the NBD lun to hold the env. I'm doing a normal MBR layout, boot, root, swap, mounting to /mnt/gentoo, arch-chroot, etc. Use the i686-musl stage 3 snap to base off of.
 - Do an emerge-webrsync.
 - Change gears, switch to the Changing CHOST instructions. - https://wiki.gentoo.org/wiki/Changing_the_CHOST_variable
@@ -20,7 +20,15 @@ Step 2 - Initial chroot - https://wiki.gentoo.org/wiki/Handbook:X86/Full/Install
   - New CFLAGS will be "-O2 -march=i486 -pipe"
   - When doing the /etc/env.d check, you're grepping for linux-musl, not linux-gnu like the example shows.
   - Once the full @world build completes, you can safely go ham on CFLAGS if desired and rebuild again to implement.
-  - Back to the handbook from here.
+  - Back to the handbook from here...
+
+Step 3 - Kernel / boot stuffs
+- Build installkernel, setting it up for grub and dracut
+  - Grub will be used to switch from pxeboot to local boot once the system is live.
+- Install sys-blck/nbd
+- Install net-misc/dhcp to get dhclient which allows dracut to use the network-legacy module
+- Update dracut's conf to be hostonly, use nbd, network-legacy and base modules only
+- Install Gentoo-sources, use stripped down kernel conf
 
 GCC Option Comparison (-O2 vs -Os vs -Oz)
 Note this is only looking at binary size, performance isn't considered / benched yet. It's also assumed that the overall memory footprint of a given binary isn't changed, IE going from -O3 to -Oz isn't going to prevent xz from eating 60MB of working ram to do it's job, just the binary's size in RAM will hopefully shrink. The theory here is on VERY RAM constrained systems, the loss of raw perf by going to a lower optimization level will be offset by not paging to swap as often by virtue of executable code being smaller.
