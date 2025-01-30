@@ -25,7 +25,7 @@ Step 2 - Start the Initial chroot - https://wiki.gentoo.org/wiki/Handbook:X86/Fu
 Step 3 - Kernel / boot stuffs
 - Build installkernel, setting it up for grub and dracut
   - Grub will be used to switch from pxeboot to local boot once the system is live.
-- Install sys-blck/nbd
+- Install sys-block/nbd
 - Install net-misc/dhcp to get dhclient which allows dracut to use the network-legacy module
 - Update dracut's conf to be hostonly, use nbd, network-legacy and base modules only
 - Install Gentoo-sources, use stripped down kernel conf
