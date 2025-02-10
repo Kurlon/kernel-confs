@@ -48,3 +48,20 @@ I'm testing this by doing a full world rebuild in a chroot, just changing cflags
 | -Oz -fomit-frame-pointer -flto -ffunction-sections -fdata-sections -Wl,--gc-sections | | 385590 | 67348 | 191744 |
 | -Os -flto -ffunction-sections -fdata-sections -Wl,--gc-sections | | 382192 | 64056 | 191620 |
 | -Oz -flto -ffunction-sections -fdata-sections -Wl,--gc-sections | | 380532 | 63620 | 191628 |
+
+
+
+New take - Got an -Os 486 musl build working, PXE booted, used that to then put /boot on CF with root and swap on NBD. OpenSSL wouldn't use afalg though, barking about not being able to find the lib... Box idle with just an SSH session in had around 25MB RAM free, and wasn't 'quick' so... plan B, let's try a full -O2 -flto build, with systemd...
+
+Step 1 - On the build box, attach nbd disk, lay down a format:
+- nbd-client host port /dev/nbd0
+- mkfs.ext4 -L rootfs -O ^metadata_csum,^64bit /dev/nbd0
+- tune2fs -o journal_data_writeback /dev/nbd0
+- mount -o nobarrier,data=writeback,relatime /dev/nbd0 /mnt/gentoo
+
+Step 2 - x86 Handbook time, grab a stage 3, extract, configure, chroot.
+- CFlags: -O2 -march=i486 -flto -ffunction-sections -fdata-sections -Wl,--gc-sections -pipe
+  - glibc won't like this, the ebuild strips off -flto but not the sections, early on the build will fail barking about missing sections. Setup a Portage override for sys-libs/glibc to build without all that. https://wiki.gentoo.org/wiki/LTO
+- After the initial emerge-webrsync, verify profile, tweak USE if needed, update @world. THEN, do a full rebuild to reap the benefits of LTO.
+  - emerge --ask --emptytree --jobs=24 @world
+...
