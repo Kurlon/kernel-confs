@@ -62,6 +62,6 @@ Step 1 - On the build box, attach nbd disk, lay down a format:
 Step 2 - x86 Handbook time, grab a stage 3, extract, configure, chroot.
 - CFlags: -O2 -march=i486 -flto -ffunction-sections -fdata-sections -Wl,--gc-sections -pipe
   - glibc won't like this, the ebuild strips off -flto but not the sections, early on the build will fail barking about missing sections. Setup a Portage override for sys-libs/glibc to build without all that. https://wiki.gentoo.org/wiki/LTO
-- After the initial emerge-webrsync, verify profile, tweak USE if needed, update @world. THEN, do a full rebuild to reap the benefits of LTO.
+- After the initial emerge-webrsync, verify profile, tweak USE if needed, update @world as per the handbook. THEN, do a full rebuild to reap the benefits of LTO.
   - emerge --ask --emptytree --jobs=24 @world
 ...
