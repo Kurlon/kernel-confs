@@ -106,7 +106,7 @@ Step 2 - x86 Handbook time, grab a stage 3, extract, configure, chroot.
       #local = true
     ```
 - gentoo-sources for kernel, use correct conf
-- Skip setting up the fstab for now.
+- Set up the fstab using UUIDs.
 - Skip enabling ssh, networking, time sync...
 - Skip setting up a bootloader, grub is already built, no use till running on the 486...
 
@@ -123,4 +123,5 @@ Step 3 - Do it
 Step N - Tuning
 - systemctl disable systemd-userdbd.service systemd-userdbd.socket
 - systemctl disable systemd-nsresourced systemd-nsresourced.socket
-- install sys-apps/rng-tools and enable rngd 
+- install sys-apps/rng-tools and enable rngd
+- Crank up the default start timeout in systemd before starting sshd for the first time, even with rngd running the initial keygen is a 15min + affair. 
