@@ -115,3 +115,8 @@ Step 3 - Do it
   - use nbd-client to attach the root device and swap device
   - start swap
   - exit to resume boot
+- Initial boot will fail to remount / as rw
+
+Step N - Tuning
+- systemctl disable systemd-userdbd.service systemd-userdbd.socket
+- systemctl disable systemd-nsresourced systemd-nsresourced.socket
