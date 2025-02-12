@@ -76,27 +76,29 @@ Step 2 - x86 Handbook time, grab a stage 3, extract, configure, chroot.
 - Before building a kernel, configure ugrd
   - emerge sys-block/nbd
   - update /etc/ugrd/config.toml, add to modules = [:
+    ```
       modules = [
       #  "ugrd.crypto.cryptsetup", # This is included by the gpg module
       #  "ugrd.crypto.gpg", # This is included by the smartcard module
       #  "ugrd.crypto.smartcard",     
          "ugrd.fs.fakeudev",
       ]
-    
+    ```
   - update /etc/ugrd/config.toml with the following at the bottom:
-     # 486 'fun'
-     find_libgcc = false
-     cpio_compression = false
+    ```
+      # 486 'fun'
+      find_libgcc = false
+      cpio_compression = false
 
-     # nbd stuff
-     dependencies = [ "/usr/bin/nbd-client" ]
+      # nbd stuff
+      dependencies = [ "/usr/bin/nbd-client" ]
 
-    # Define console information
-    [console.ttyS0]
-    baud = 115_200
-    type = "vt100"
-    local = true
-
+      # Define console information
+      [console.ttyS0]
+      baud = 115_200
+      type = "vt100"
+      local = true
+    ```
 - gentoo-sources for kernel, use correct conf
 - Skip setting up the fstab for now.
 - Skip enabling ssh, networking, time sync...
