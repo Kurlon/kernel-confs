@@ -84,6 +84,7 @@ Step 2 - x86 Handbook time, grab a stage 3, extract, configure, chroot.
       #  "ugrd.crypto.gpg", # This is included by the smartcard module
       #  "ugrd.crypto.smartcard",     
          "ugrd.fs.fakeudev",
+         "ugrd.base.debug",
       ]
     ```
   - update /etc/ugrd/config.toml with the following at the bottom:
@@ -96,10 +97,10 @@ Step 2 - x86 Handbook time, grab a stage 3, extract, configure, chroot.
       dependencies = [ "/usr/bin/nbd-client" ]
 
       # Define console information
-      [console.ttyS0]
-      baud = 115_200
-      type = "vt100"
-      local = true
+      #[console.ttyS0]
+      #baud = 115_200
+      #type = "vt100"
+      #local = true
     ```
 - gentoo-sources for kernel, use correct conf
 - Skip setting up the fstab for now.
@@ -110,4 +111,7 @@ Step 3 - Do it
 - Copy kernel and initramfs over to the 486, place on /boot, update grub cnf
 - Shut down the chroot, drop the nbd
 - Reboot the 486, use the new kernel and initramfs
-- 
+- Boot will drop right to a shell at the start
+  - use nbd-client to attach the root device and swap device
+  - start swap
+  - exit to resume boot
