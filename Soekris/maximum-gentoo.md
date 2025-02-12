@@ -94,7 +94,10 @@ Step 2 - x86 Handbook time, grab a stage 3, extract, configure, chroot.
       cpio_compression = false
 
       # nbd stuff
-      dependencies = [ "/usr/bin/nbd-client" ]
+      dependencies = [
+           "/usr/bin/nbd-client",
+           "/usr/bin/swapon",
+      ]
 
       # Define console information
       #[console.ttyS0]
