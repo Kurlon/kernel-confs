@@ -64,4 +64,46 @@ Step 2 - x86 Handbook time, grab a stage 3, extract, configure, chroot.
   - glibc won't like this, the ebuild strips off -flto but not the sections, early on the build will fail barking about missing sections. Setup a Portage override for sys-libs/glibc to build without all that. https://wiki.gentoo.org/wiki/LTO
 - After the initial emerge-webrsync, verify profile, tweak USE if needed, update @world as per the handbook. THEN, do a full rebuild to reap the benefits of LTO.
   - emerge --ask --emptytree --jobs=24 @world
-...
+- Installkernel, going to try udrd instead of dracut, and will be trying to manually script direct nbd attach into it.
+  - Set ugrd use flag for installkernel along with grub
+  - Turn off fonts and themes for grub, don't need them where we're going
+  - We're flying bleeding edge, so unmask the dev (9999) ver of ugrd
+    - package.accept_keywords/ugrd
+      - sys-kernel/ugrd **
+      - dev-python/zenlib **
+      - dev-python/pycpio **
+    - package.use.mask/installkernel sys-kernel/installkernel -ugrd
+- Before building a kernel, configure ugrd
+  - emerge sys-block/nbd
+  - update /etc/ugrd/config.toml, add to modules = [:
+      modules = [
+      #  "ugrd.crypto.cryptsetup", # This is included by the gpg module
+      #  "ugrd.crypto.gpg", # This is included by the smartcard module
+      #  "ugrd.crypto.smartcard",     
+         "ugrd.fs.fakeudev",
+      ]
+    
+  - update /etc/ugrd/config.toml with the following at the bottom:
+     # 486 'fun'
+     find_libgcc = false
+     cpio_compression = false
+
+     # nbd stuff
+     dependencies = [ "/usr/bin/nbd-client" ]
+
+    # Define console information
+    [console.ttyS0]
+    baud = 115_200
+    type = "vt100"
+    local = true
+
+- gentoo-sources for kernel, use correct conf
+- Skip setting up the fstab for now.
+- Skip enabling ssh, networking, time sync...
+- Skip setting up a bootloader, grub is already built, no use till running on the 486...
+
+Step 3 - Do it
+- Copy kernel and initramfs over to the 486, place on /boot, update grub cnf
+- Shut down the chroot, drop the nbd
+- Reboot the 486, use the new kernel and initramfs
+- 
