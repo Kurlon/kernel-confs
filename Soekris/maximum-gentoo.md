@@ -120,3 +120,4 @@ Step 3 - Do it
 Step N - Tuning
 - systemctl disable systemd-userdbd.service systemd-userdbd.socket
 - systemctl disable systemd-nsresourced systemd-nsresourced.socket
+- install sys-apps/rng-tools and enable rngd 
