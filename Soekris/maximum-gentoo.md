@@ -69,9 +69,11 @@ Step 2 - x86 Handbook time, grab a stage 3, extract, configure, chroot.
   - Turn off fonts and themes for grub, don't need them where we're going
   - We're flying bleeding edge, so unmask the dev (9999) ver of ugrd
     - package.accept_keywords/ugrd
-      - sys-kernel/ugrd **
-      - dev-python/zenlib **
-      - dev-python/pycpio **
+      ```
+      sys-kernel/ugrd **
+      dev-python/zenlib **
+      dev-python/pycpio **
+      ```
     - package.use.mask/installkernel sys-kernel/installkernel -ugrd
 - Before building a kernel, configure ugrd
   - emerge sys-block/nbd
