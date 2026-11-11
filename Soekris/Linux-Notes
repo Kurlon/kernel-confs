@@ -27,3 +27,7 @@ systemctl disable systemd-resolved
 
 systemctl disable systemd-userdbd systemd-userdbd.socket systemd-nsresourced
   Will need to reboot to see the HUGE benefit of this, all fancy ways of Systemd trying to 'speed up' lookups against system files like passwords, groups, etc.
+
+Additional trimming:
+- Use JFS for root?
+- Set IO Scheduler to none with flash storage (elevator=none kernel cmd line arg)
