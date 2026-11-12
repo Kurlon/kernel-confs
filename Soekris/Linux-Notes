@@ -30,4 +30,4 @@ systemctl disable systemd-userdbd systemd-userdbd.socket systemd-nsresourced
 
 Additional trimming:
 - Use JFS for root?
-- Set IO Scheduler to none with flash storage (elevator=none kernel cmd line arg)
+- Set IO Scheduler to none with flash storage (elevator=none kernel cmd line arg or udev rule)
