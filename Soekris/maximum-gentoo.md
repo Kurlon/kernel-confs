@@ -125,6 +125,6 @@ Step N - Tuning
 - systemctl disable systemd-nsresourced systemd-nsresourced.socket
 - install sys-apps/rng-tools and enable rngd
 - Crank up the default start timeout in systemd before starting sshd for the first time, even with rngd running the initial keygen is a 15min + affair. 
-- Ya know, an initrd isn't actually required... way faster boot without one...
+- Ya know, an initrd isn't actually required... way faster boot without one if root is local...
 - emerge --ask sys-block/io-scheduler-udev-rules and edit /etc/default/io-scheduler
 - enable updatedb and man-db timers
