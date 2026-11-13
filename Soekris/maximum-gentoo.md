@@ -128,3 +128,4 @@ Step N - Tuning
 - Ya know, an initrd isn't actually required... way faster boot without one if root is local...
 - emerge --ask sys-block/io-scheduler-udev-rules and edit /etc/default/io-scheduler
 - enable updatedb and man-db timers
+- systemctl disable --now getty@tty1
