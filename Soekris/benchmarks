@@ -1,0 +1,11 @@
+dry.c from https://gcc.gnu.org/bugzilla/attachment.cgi?id=18994
+run as: CFLAGS='-std=gnu89 -march=native' ./dry.c'
+Note results
+
+4801 - microseconds for one Dhrystone / Dhrystones per Second
+native - 3.2 / 315457
+i486 - 3.4 / 297796
+pentium-mmx - 3.7 / 270709
+winchip-c6 - 3.4 / 297796
+i686 - 3.9 / 255232
+geode - 3.5 / 286862
