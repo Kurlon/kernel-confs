@@ -129,3 +129,4 @@ Step N - Tuning
 - emerge --ask sys-block/io-scheduler-udev-rules and edit /etc/default/io-scheduler
 - enable updatedb and man-db timers
 - systemctl disable --now getty@tty1
+- lazytime instead of relatime
