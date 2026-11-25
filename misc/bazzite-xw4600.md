@@ -6,10 +6,10 @@ RAM: This box is PICKY, it wants DDR2 667 or 800, ECC, UNBUFFERED, x8 layout. It
 
 UEFI: Clover burned to an actual CDR, in a DVD-RW drive hanging off USB2 gets me the ability to boot UEFI, might even be able to fake a TPM for 'secure' boot with it? Fires up the Bazzite installer just fine, no complaints about spotting CSM/Legacy boot in use, trick will be getting Clover installed on the local HD after, that's where I've hit the wall before.
 
+Use boot0af and edit the gpt to enable legacy active marker on /dev/sda1 (EFI part for Bazzite) partition. Smear boot6 around so it's in /boot/efi and /boot/efi/EFI...
+
 Notes:
-- Clover CD boots much quicker with a Bazzite installer stick in USB, when not present it appears to hang before the Clover menu appears. Digging shows this random boot time depending on what's present has been spotted before.
-- Bazzite defaults to relatime, stuff lazytime in to reduce IOPs.
+- Clover CD boots much quicker with a Bazzite installer stick in USB, when not present it appears to hang before the Clover menu appears. Digging online shows this random boot time depending on what's present has been spotted before.
+- Bazzite defaults to relatime, stuff lazytime in to reduce IOPs, if you can coax dracut/bootc to do it?
 - Add mitigations=off, live dangerously. Get rid of the quiet option so you can see it die in realtime when issues do happen.
-- Figure out how to add lazytime to / mount options to cut down writes to the SSD.
-- - modify rootflags kernel command line arg with rpm-ostree kargs
 - Switch off from nvidia-legacy to get on 7.3.x kernel and nouveau driver. 6.18 was hanging on boot complaining about rcu threads not waking unless I did idle=poll after updating the install.
