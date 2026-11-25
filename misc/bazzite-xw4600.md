@@ -9,4 +9,7 @@ UEFI: Clover burned to an actual CDR, in a DVD-RW drive hanging off USB2 gets me
 Notes:
 - Clover CD boots much quicker with a Bazzite installer stick in USB, when not present it appears to hang before the Clover menu appears. Digging shows this random boot time depending on what's present has been spotted before.
 - Bazzite defaults to relatime, stuff lazytime in to reduce IOPs.
-- Add mitigations=off, live dangerously
+- Add mitigations=off, live dangerously. Get rid of the quiet option so you can see it die in realtime when issues do happen.
+- Figure out how to add lazytime to / mount options to cut down writes to the SSD.
+- - modify rootflags kernel command line arg with rpm-ostree kargs
+- Switch off from nvidia-legacy to get on 7.3.x kernel and nouveau driver. 6.18 was hanging on boot complaining about rcu threads not waking unless I did idle=poll after updating the install.
